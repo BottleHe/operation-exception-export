@@ -8,6 +8,7 @@ import (
 	"github.com/tealeg/xlsx"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"text/template"
@@ -40,6 +41,7 @@ type DataStruct struct {
 }
 
 func init() {
+	runtime.GOMAXPROCS(1)
 	path, _ := os.Executable()
 	_, execFileName := filepath.Split(path)
 	cmd = &cobra.Command{
